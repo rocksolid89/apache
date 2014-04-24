@@ -1,0 +1,58 @@
+there will be introductory material for apache web server
+
+Spawn processes and|or can be dynamically:
+	-expanded (увеличены)
+	-contracted (сокращены)
+Modular support (extensible):
+	-mod_ssl (https) -  TLS (client-browser-server)
+	-mod_asis - raw delivery of http documents - contains full http header info (contain full header info)
+	-mod_alias - url mapping to various locations in the file system space
+Common Gateway interface (CGI)
+Content derivation - MIME
+	mod_mine - file suffix - content type is mapped to file suffix
+	mod_mime_magic - header bytes in file 
+Content negotiation  - i.e. language support - provides the client with the appropriate language base content
+
+Content compression - mod_deflate - using gzip (help with scaling sites to large user-base)
+
+Note: splits the processing more equitably of content between server and alleviates intermediary pipes
+
+Manipulate environmental variables based on the http requests - 'setenvif'
+Note: own environmental variables for each connection
+Note: apache VAR drive communications between http client -> http server
+
+User Directories - i.e. $HOME/www facilitates broader publishing of content outside of standard DocumentRoot
+
+Apache standard logging:
+	access - default hits | misses | etc
+	error - misses | server errors
+Apache forensic logging
+	2-entries per request
+	includes ful header request
+Redirections (http standards)
+
+URL rewriting - mod_rewrite - i.e force ssl access for specific content areas
+	supports regular expressions, conditions, stacks, etc.
+
+Distributed authoring and versioning (WebDAV)
+
+Reverse proxy server - facilitates front end filtering 
+
+Authentication
+	basic - clear text
+	digest 
+	PAM
+	DBM
+	MySQL PostgreSQL
+
+Infinite scalability  
+	load balancing of nodes
+	reverse proxying
+
+Load balancing - modular
+
+Multi platform support
+
+Virtual hosts:
+	namebased
+	ip-based
