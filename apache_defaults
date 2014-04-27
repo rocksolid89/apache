@@ -1,0 +1,26 @@
+### apache defaults ###
+
+control over content access
+
+Task:
+	explore defaults
+	a. ubuntu/debian systems - '/etc/apache2'
+		apache2.conf - primary configuration file (in centOS/RH - place holder httpd.conf)
+		conf.d - other directory for configuration files
+	b. 000-default (located in directory ../sites-enable
+		DocumentRoot /var/www - location from which to serve content
+			#each site have own documentroot directory
+		ServerAdmin '@mail.com' - potentinal leek will be here.
+		DirectoryIndex index.htm - indicates default file to serve when no particular file is requested;
+	c. <Directory /var/www/> ... </Directory>
+		Note: directives flow downwards unless interrupted by lower-level
+
+		Indexes - presents directory listing to the http client
+		MultiViews - matches similar content
+		ExecuteCGI - permits cgi execution (support php, python)
+		SymlinksIfOwnerMatch - follow symlinks on the file system if the owner matches
+		AllowOverride None - prohibits '.htaccess' directives from overriding: conf file directives
+		Options Include: all | none | directive_type ... 
+		
+		Order allow, deny
+		allow from all - this permits access to content area from all HTTP clients
