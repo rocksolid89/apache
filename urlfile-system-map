@@ -1,0 +1,19 @@
+in this section we take a look on url mappings to filesystem
+
+##URL to filesystem##
+
+Features:
+	Publish URL to various locations in or outside of the file system
+	
+	Alias | ScriptAlias (for CGI)
+
+Task:
+	Publish and alias for directory name 'pub1/' below DocumetRoot directory
+	modify 000-default
+
+	Alias /public /var/www/pub1
+	and redefine options for this directory
+
+remaining time - 28:50
+
+
