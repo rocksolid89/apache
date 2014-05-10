@@ -1,0 +1,38 @@
+#Redirection:
+let's now turn attension to redirection - which is another means of moving users around or browsers to desire destinations
+
+Features:
+	Send client to new destination
+	Updates browser or HTTP caller URL 
+	Remaps: URL-path beginning with '/' to new URL (scheme and hostname | /path)
+	Implenetation of 'mod_alias' as: Redirect, RedirectMatch, RedirectPermanent, RedirectTemp
+	Task precedence over: Alias && ScriptAlias regardless of Configuration location of Alias-based directives
+	Default status = 302 (Temprorary) if unspecified
+	Supports codes in the range 300-399 ( which is standard redirection codes ) && code: 410 - gone
+		Note: if using code: 410, ommit URL ARG (опускаются URL ARG)
+	Common Codes:
+		a. 301 - permanent
+		b. 302 - temprorary
+	Usage: 'Redirect[Match|Permanent|Temp] [status] URL-path URL'	
+	Facilitates the broad distribution of content requests
+
+Task:
+	Use Redirection
+Note: URI consist of 
+	a. scheme - i.e. HTTP | FTP | etc
+	b. hostname - i.e. www.localhost.ru | 127.1
+	c. URL path - '/docs'
+
+	'Redirect /pub1 /pub2' - redirection on the same server. uses same scheme and same hostname
+		-send the request to our servers with url-path '/pub1'
+		-get the responce code 302 - Found (3xx - redirection - further action must be taken in order to complete the request)
+		-premanently redirects us to url-path '/pub2'
+	'Redirect /pub1 http://192.168.1.33/pub2' - sends client with 302 to remote system
+	'Redirect /pub1 http://sentinel2.luxoft.com/sen' - this congiguration redirects us to another server (identified by DNS hostname)
+	'RedirectMatch (.*)\.doc $1.pdf' - this congiguration string applies .pdf substitution across the whole site
+	'RedirectMatch (.*)\.doc /PDF/$1.pdf'
+
+	Use RedirectMatch in conjunction with Alias
+
+Note: 'Redirect' take precedence over 'Alias'
+Note:  However, the above RedirectMatch statement must MATCH, otherwise 'Alias' statement wins

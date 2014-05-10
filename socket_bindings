@@ -1,0 +1,27 @@
+##Apache Socket Bindings##
+
+Features:
+	1. IPv[46]:Port -> Sockets
+	2. Default Bind to ALL addresses and port 80
+	3. Facilitates virtual hosting
+		a. Bindings are tagged to virtual host containers
+	4. 'Listen' - key directive
+	Note: grep -i listen  - across Apache config files to determine where applicable. On Debian based systems, check 'ports.conf' config file.
+	Note: netstat -ntlp | grep -i apache
+Task:
+1. Explore Defaults
+	a. ports.conf
+	'NameVirtualHost *:80' - facilitates bounded VirtualHosts, including the default virtual host: /etc/apache2/sites-enabled/000-default
+	<VirtualHost *:80>
+2. Bind to alternate ports
+	a. To add new port for listen
+		in ports.conf - add new directive 'Listen 8080'
+				include 'NameVirtualHost *:8080'
+		in directory ../sites-enabled/..
+				create new file which will be serve our new virtual host
+
+Note: ifconfig eth0:1 ip-address/mask - will add virtual network interface (with another ip address) for our system
+      ifconfig eth0:1 del ip-address - remove virtual interface
+
+Note: ensure that additional addresses are bound to the network interface prior to reload of Apache, otherwise, Apache may fail to load
+
