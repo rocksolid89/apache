@@ -1,0 +1,29 @@
+let's talk about virtual hosts in apache web-server
+
+##Apache virtual hosts##
+
+features:
+1. Multiple web-sites, per one host (physical or virtual)
+2. IP-based (distinct IP per host)
+3. Name-based: HTTP1.1 - request supplies desired target site
+
+	a. shares resources (of IPs) more efficiently
+
+Task:
+
+1. Explore defaults
+	<VirtualHost *:80> - matches 'Listen' and(or) 'NameVirtualHost' directives in ports.conf file(for debian-based apache2 installations).
+
+Note: ensure that Name resolution is properly configured for NameBased hosting
+
+2. IP-based Host
+	a.'Listen IP:Port' - socket
+	b. Match the above socket to  Virtual Host container
+
+3. Name-based Host
+	a. 'Listen:Port' - socket
+	b. 'NameVirtualHost'
+	c. 'ServerName FQDN'
+Note: Post first site, the above directives are important to distinguish sites within apache2 web-server
+Note: if you stuck with some troubles like all sites serving the same content you should check 'default' settings in sites-available directory
+	
